@@ -5,6 +5,7 @@ let moedasGastas = 0;
 let moedasGanhas = 0;
 let rotacaoAtual = 0;
 let totalMoedasCompradas = 0;
+let chavePix = "";
 let girando = false;
 const URL_PLANILHA =
     "https://script.google.com/macros/s/AKfycbzN3aouFt-RqDOMuGhegfgLi1V5KfIBvPxomH1z65RUUQ_HAVe18KipozNaF16LPg7BJg/exec";
@@ -298,11 +299,17 @@ window.addEventListener("load", () => {
 
 function salvarNome(){
 
-    const input =
+    const inputNome =
         document.getElementById("nomeAluno");
 
+    const inputPix =
+        document.getElementById("pixAluno");
+
     const nome =
-        input.value.trim();
+        inputNome.value.trim();
+
+    const pix =
+        inputPix.value.trim();
 
 
     if(nome.length < 2){
@@ -314,7 +321,18 @@ function salvarNome(){
     }
 
 
+    if(pix.length < 3){
+
+        alert("Informe sua chave PIX.");
+
+        return;
+
+    }
+
+
     nomeAluno = nome;
+
+    chavePix = pix;
 
 
     localStorage.setItem(
@@ -326,6 +344,9 @@ function salvarNome(){
     document
         .getElementById("nomePerfil")
         .innerText = nomeAluno;
+
+
+    registrarAlunoNaPlanilha();
 
 
     document
