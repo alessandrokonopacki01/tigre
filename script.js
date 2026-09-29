@@ -4,6 +4,7 @@ let numeroGiros = 0;
 let moedasGastas = 0;
 let moedasGanhas = 0;
 let rotacaoAtual = 0;
+let totalMoedasCompradas = 0;
 let girando = false;
 const URL_PLANILHA =
     "https://script.google.com/macros/s/AKfycbzN3aouFt-RqDOMuGhegfgLi1V5KfIBvPxomH1z65RUUQ_HAVe18KipozNaF16LPg7BJg/exec";
@@ -233,6 +234,8 @@ function confirmarPagamento(quantidade, modal){
 
     saldo += quantidade;
 
+    totalMoedasCompradas += quantidade;
+
     atualizarTela();
 
     fecharModal(modal);
@@ -442,30 +445,61 @@ function atualizarTela(){
 
 function sacar(){
 
-    const confirmar =
-        confirm(
-            `Encerrar a simulação?\n\n` +
-            `Aluno: ${nomeAluno}\n` +
-            `Saldo final: ${saldo} moedas`
-        );
-
+    const confirmar = confirm(
+        `Encerrar a simulação?\n\n` +
+        `Aluno: ${nomeAluno}\n` +
+        `Saldo final: ${saldo} moedas`
+    );
 
     if(!confirmar){
         return;
     }
 
 
+    const diferenca =
+        saldo - totalMoedasCompradas;
+
+
+    let resultadoFinal = "";
+
+
+    if(diferenca > 0){
+
+        resultadoFinal =
+            `GANHOU ${diferenca} moedas`;
+
+    }
+
+    else if(diferenca < 0){
+
+        resultadoFinal =
+            `PERDEU ${Math.abs(diferenca)} moedas`;
+
+    }
+
+    else{
+
+        resultadoFinal =
+            "NÃO GANHOU NEM PERDEU";
+
+    }
+
+
+    // ----------------------------------
+    // REGISTRO LOCAL
+    // ----------------------------------
+
     const registro = {
 
         nome: nomeAluno,
 
+        investido: totalMoedasCompradas,
+
         saldoFinal: saldo,
 
+        resultado: resultadoFinal,
+
         giros: numeroGiros,
-
-        gastas: moedasGastas,
-
-        ganhas: moedasGanhas,
 
         data:
             new Date().toLocaleString()
@@ -479,9 +513,40 @@ function sacar(){
     );
 
 
-    alert(
-        `Simulação encerrada!\n\n` +
-        `Saldo final: ${saldo} moedas.`
+    // ----------------------------------
+    // MENSAGEM PARA WHATSAPP
+    // ----------------------------------
+
+    const mensagem = `
+🎰 RESULTADO DA SIMULAÇÃO
+
+👤 Aluno: ${nomeAluno}
+
+💰 Moedas adquiridas:
+${totalMoedasCompradas}
+
+🪙 Saldo final:
+${saldo}
+
+📊 Resultado:
+${resultadoFinal}
+
+🎯 Giros realizados:
+${numeroGiros}
+    `;
+
+
+    const numeroProfessor =
+        "5542999806150";
+
+
+    const urlWhatsApp =
+        `https://wa.me/${numeroProfessor}?text=${encodeURIComponent(mensagem)}`;
+
+
+    window.open(
+        urlWhatsApp,
+        "_blank"
     );
 
 }
