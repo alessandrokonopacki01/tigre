@@ -605,3 +605,29 @@ async function registrarAlunoNaPlanilha(){
     }
 
 }
+function copiarTexto(idTexto, idBotao){
+
+    const texto =
+        document.getElementById(idTexto).innerText;
+
+    navigator.clipboard.writeText(texto)
+        .then(() => {
+
+            const botao =
+                document.getElementById(idBotao);
+
+            const textoOriginal =
+                botao.innerText;
+
+            botao.innerText = "Copiado! ✓";
+
+            setTimeout(() => {
+
+                botao.innerText =
+                    textoOriginal;
+
+            }, 2000);
+
+        });
+
+}
