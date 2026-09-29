@@ -345,3 +345,19 @@
     color: white;
 
 }
+.qr-img {
+    width: 160px;
+    height: 160px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 15px auto;
+
+    background: white;
+
+    padding: 6px;
+
+    border-radius: 8px;
+}
