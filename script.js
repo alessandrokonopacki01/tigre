@@ -30,26 +30,26 @@ const premios = [
     },
 
     {
-        nome: "2 moedas",
+        nome: "1 moedas",
         premio: 2,
         chance: 15
     },
 
     {
-        nome: "5 moedas",
+        nome: "1 moedas",
         premio: 5,
         chance: 7
     },
 
     {
-        nome: "10 moedas",
-        premio: 10,
+        nome: "1 moedas",
+        premio: 1,
         chance: 2.5
     },
 
     {
-        nome: "50 moedas 🎉",
-        premio: 50,
+        nome: "1 moedas 🎉",
+        premio: 5,
         chance: 0.5
     }
 
