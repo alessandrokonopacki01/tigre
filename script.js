@@ -5,7 +5,8 @@ let moedasGastas = 0;
 let moedasGanhas = 0;
 let rotacaoAtual = 0;
 let girando = false;
-
+const URL_PLANILHA =
+    "https://script.google.com/macros/s/AKfycbzN3aouFt-RqDOMuGhegfgLi1V5KfIBvPxomH1z65RUUQ_HAVe18KipozNaF16LPg7BJg/exec";
 
 // -------------------------
 // PRÊMIOS
@@ -482,5 +483,39 @@ function sacar(){
         `Simulação encerrada!\n\n` +
         `Saldo final: ${saldo} moedas.`
     );
+
+}
+
+async function registrarAlunoNaPlanilha(){
+
+    const dados = {
+        nome: nomeAluno,
+        pix: chavePix,
+        depositado: 0,
+        saldo: saldo,
+        giros: numeroGiros
+    };
+
+    try {
+
+        await fetch(URL_PLANILHA, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify(dados)
+        });
+
+        console.log("Aluno enviado para a planilha.");
+
+    } catch(erro) {
+
+        console.error(
+            "Erro ao registrar aluno:",
+            erro
+        );
+
+    }
 
 }
