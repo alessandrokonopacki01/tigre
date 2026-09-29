@@ -8,9 +8,7 @@ let totalMoedasCompradas = 0;
 let chavePix = "";
 let girando = false;
 const URL_PLANILHA =
-    "https://script.google.com/macros/s/AKfycbzN3aouFt-RqDOMuGhegfgLi1V5KfIBvPxomH1z65RUUQ_HAVe18KipozNaF16LPg7BJg/exec";
-
-// -------------------------
+"https://script.google.com/macros/s/AKfycbytrHwnIXgclC6iWCumha-6Ze0DkzL0Liw6s2cz3KDJ7SqwjJ5ZzK-LnwJ_BGSb0vJWhg/exec";
 // PRÊMIOS
 // -------------------------
 
@@ -584,17 +582,14 @@ async function registrarAlunoNaPlanilha(){
 
     try {
 
-        await fetch(
-            "https://script.google.com/macros/s/AKfycbz8f-rLAXrnFHSSz163Bo1GUnWEu9A9ytfMhsoayW5aeOvnLWoqaHxZCBFFfqmbposmvg/exec",
-            {
-                method: "POST",
-                mode: "no-cors",
-                headers: {
-                    "Content-Type": "text/plain;charset=utf-8"
-                },
-                body: JSON.stringify(dados)
-            }
-        );
+await fetch(URL_PLANILHA, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+    },
+    body: JSON.stringify(dados)
+});
 
         console.log("Jogador enviado para a planilha.");
 
