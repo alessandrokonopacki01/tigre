@@ -17,19 +17,19 @@ const premios = [
     {
         nome: "Nada 😢",
         premio: 0,
-        chance: 80
+        chance: 60
     },
 
     {
         nome: "1 moeda",
         premio: 1,
-        chance: 10
+        chance: 25
     },
 
     {
         nome: "2 moedas",
         premio: 2,
-        chance: 5
+        chance: 10
     },
 
     {
