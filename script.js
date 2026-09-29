@@ -242,7 +242,7 @@ function confirmarPagamento(quantidade, modal){
     fecharModal(modal);
 
     alert(
-        `Pagamento fictício confirmado!\n+${quantidade} moedas adicionadas.`
+        `Pagamento confirmado!\n+${quantidade} moedas adicionadas.`
     );
 
 }
@@ -404,7 +404,7 @@ function iniciarAviso(){
                 botao.disabled = false;
 
                 botao.innerText =
-                    "Entendi — iniciar simulação";
+                    "Entendi — iniciar jogo";
 
             }
 
@@ -539,9 +539,9 @@ function sacar(){
     // ----------------------------------
 
     const mensagem = `
-🎰 RESULTADO DA SIMULAÇÃO
+🎰 RESULTADO
 
-👤 Aluno: ${nomeAluno}
+👤 Jogador: ${nomeAluno}
 
 💰 Moedas adquiridas:
 ${totalMoedasCompradas}
@@ -593,12 +593,12 @@ async function registrarAlunoNaPlanilha(){
             body: JSON.stringify(dados)
         });
 
-        console.log("Aluno enviado para a planilha.");
+        console.log("Jogador enviado para a planilha.");
 
     } catch(erro) {
 
         console.error(
-            "Erro ao registrar aluno:",
+            "Erro ao registrar jogador:",
             erro
         );
 
