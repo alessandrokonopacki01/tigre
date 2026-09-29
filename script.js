@@ -255,3 +255,34 @@ function atualizarTela(){
         .innerText = moedasGanhas;
 
 }
+function abrirModal(id){
+
+    document
+        .getElementById(id)
+        .style.display = "flex";
+
+}
+
+
+function fecharModal(id){
+
+    document
+        .getElementById(id)
+        .style.display = "none";
+
+}
+
+
+function confirmarPagamento(quantidade, modal){
+
+    saldo += quantidade;
+
+    atualizarTela();
+
+    fecharModal(modal);
+
+    alert(
+        `Pagamento fictício confirmado!\n+${quantidade} moedas adicionadas.`
+    );
+
+}

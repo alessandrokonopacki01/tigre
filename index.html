@@ -24,29 +24,27 @@
 
     <!-- COMPRA DE MOEDAS -->
 
-    <section class="painel">
+<section class="painel">
 
-        <h2>Comprar moedas</h2>
+    <h2>Adicionar moedas</h2>
 
-        <p>
-            As moedas são fictícias e servem apenas para a simulação.
-        </p>
+    <p>Escolha um pacote fictício para simular a compra.</p>
 
-        <br>
+    <br>
 
-        <button class="comprar" onclick="comprarMoedas(10)">
-            +10 moedas
-        </button>
+    <button class="comprar" onclick="abrirModal('modal10')">
+        10 moedas
+    </button>
 
-        <button class="comprar" onclick="comprarMoedas(50)">
-            +50 moedas
-        </button>
+    <button class="comprar" onclick="abrirModal('modal50')">
+        50 moedas
+    </button>
 
-        <button class="comprar" onclick="comprarMoedas(100)">
-            +100 moedas
-        </button>
+    <button class="comprar" onclick="abrirModal('modal100')">
+        100 moedas
+    </button>
 
-    </section>
+</section>
 
 
     <!-- ROLETA -->
@@ -139,6 +137,85 @@
         </table>
 
     </section>
+    <!-- MODAL 1 MOEDAS -->
+
+<div class="modal" id="modal10">
+
+    <div class="modal-conteudo">
+
+        <span class="fechar" onclick="fecharModal('modal10')">&times;</span>
+
+        <h2>10 moedas</h2>
+
+        <p>Pagamento fictício</p>
+
+        <div class="qr-code">
+            QR CODE
+        </div>
+
+        <p class="valor">R$ 1,00</p>
+
+        <button class="confirmar" onclick="confirmarPagamento(10, 'modal10')">
+            Simular pagamento
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- MODAL 5 MOEDAS -->
+
+<div class="modal" id="modal50">
+
+    <div class="modal-conteudo">
+
+        <span class="fechar" onclick="fecharModal('modal50')">&times;</span>
+
+        <h2>50 moedas</h2>
+
+        <p>Pagamento fictício</p>
+
+        <div class="qr-code">
+            QR CODE
+        </div>
+
+        <p class="valor">R$ 5,00</p>
+
+        <button class="confirmar" onclick="confirmarPagamento(50, 'modal50')">
+            Simular pagamento
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- MODAL 10 MOEDAS -->
+
+<div class="modal" id="modal100">
+
+    <div class="modal-conteudo">
+
+        <span class="fechar" onclick="fecharModal('modal100')">&times;</span>
+
+        <h2>100 moedas</h2>
+
+        <p>Pagamento fictício</p>
+
+        <div class="qr-code">
+            QR CODE
+        </div>
+
+        <p class="valor">R$ 10,00</p>
+
+        <button class="confirmar" onclick="confirmarPagamento(100, 'modal100')">
+            Simular pagamento
+        </button>
+
+    </div>
+
+</div>
 </main>
 <script src="script.js"></script>
 </body>
