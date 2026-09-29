@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tigre</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <h1>🐯 Tigrinho Matemático</h1>
+
+    <div class="saldo">
+        🪙 <span id="saldo">0</span>
+    </div>
+
+</header>
+
+<main>
+
+    <!-- COMPRA DE MOEDAS -->
+
+    <section class="painel">
+
+        <h2>Comprar moedas</h2>
+
+        <p>
+            As moedas são fictícias e servem apenas para a simulação.
+        </p>
+
+        <br>
+
+        <button class="comprar" onclick="comprarMoedas(10)">
+            +10 moedas
+        </button>
+
+        <button class="comprar" onclick="comprarMoedas(50)">
+            +50 moedas
+        </button>
+
+        <button class="comprar" onclick="comprarMoedas(100)">
+            +100 moedas
+        </button>
+
+    </section>
+
+
+    <!-- ROLETA -->
+
+    <section class="painel">
+
+        <h2>Roleta</h2>
+
+        <p>Cada giro custa <strong>1 moeda</strong>.</p>
+
+
+        <div class="roleta-container">
+
+            <div class="ponteiro"></div>
+
+            <div
+                class="roleta"
+                id="roleta">
+            </div>
+
+        </div>
+
+
+        <button
+            id="btnGirar"
+            class="girar"
+            onclick="girar()">
+
+            🎰 GIRAR
+
+        </button>
+
+
+        <div
+            class="resultado"
+            id="resultado">
+        </div>
+
+    </section>
+
+
+    <!-- ESTATÍSTICAS -->
+
+    <section class="painel">
+
+        <h2>Estatísticas</h2>
+
+        <div class="estatisticas">
+
+            <div class="card">
+                Giros
+                <strong id="giros">0</strong>
+            </div>
+
+            <div class="card">
+                Moedas gastas
+                <strong id="gastas">0</strong>
+            </div>
+
+            <div class="card">
+                Moedas ganhas
+                <strong id="ganhas">0</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HISTÓRICO -->
+
+    <section class="painel">
+
+        <h2>Histórico</h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Giro</th>
+                    <th>Resultado</th>
+                    <th>Prêmio</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="historico"></tbody>
+
+        </table>
+
+    </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
