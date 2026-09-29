@@ -18,6 +18,24 @@
         🪙 <span id="saldo">0</span>
     </div>
 
+    <div class="perfil">
+
+    <div>
+        👤
+        <span id="nomePerfil">
+            Aluno
+        </span>
+    </div>
+
+    <div>
+        🪙
+        <span id="saldo">
+            0
+        </span>
+    </div>
+
+</div>
+
 </header>
 
 <main>
@@ -45,7 +63,12 @@
     </button>
 
 </section>
-
+<button
+    class="sacar"
+    onclick="sacar()"
+>
+    💰 Registrar saldo final
+</button>
 
     <!-- ROLETA -->
 
@@ -216,6 +239,69 @@
     </div>
 
 </div>
+
+<div class="modal modal-obrigatorio" id="modalNome">
+    <div class="modal-conteudo">
+
+        <h2>Identificação</h2>
+
+        <p>Digite seu nome para iniciar a simulação.</p>
+
+        <input
+            type="text"
+            id="nomeAluno"
+            placeholder="Seu nome"
+            autocomplete="off"
+        >
+
+        <button
+            class="confirmar"
+            onclick="salvarNome()"
+        >
+            Entrar
+        </button>
+
+    </div>
+</div>
+<div class="modal modal-obrigatorio" id="modalAviso">
+
+    <div class="modal-conteudo">
+
+        <h2>⚠️ Atenção</h2>
+
+        <p>
+            Esta é uma simulação educacional.
+        </p>
+
+        <p>
+            Nenhum dinheiro real é depositado,
+            apostado ou sacado.
+        </p>
+
+        <p>
+            Durante esta atividade, o sistema armazenará
+            apenas seu nome e o saldo fictício utilizado
+            nesta simulação.
+        </p>
+
+        <p>
+            Utilize suas moedas fictícias durante a atividade
+            e registre seu saldo final antes de encerrar.
+        </p>
+
+        <button
+            id="btnEntendi"
+            class="confirmar"
+            disabled
+            onclick="fecharAviso()"
+        >
+            Aguarde 10 segundos...
+        </button>
+
+    </div>
+
+</div>
+
 </main>
 <script src="script.js"></script>
 </body>

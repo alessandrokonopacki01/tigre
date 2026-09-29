@@ -1,13 +1,9 @@
 let saldo = 0;
-
+let nomeAluno = "";
 let numeroGiros = 0;
-
 let moedasGastas = 0;
-
 let moedasGanhas = 0;
-
 let rotacaoAtual = 0;
-
 let girando = false;
 
 
@@ -30,43 +26,30 @@ const premios = [
     },
 
     {
-        nome: "1 moedas",
+        nome: "2 moedas",
         premio: 2,
         chance: 15
     },
 
     {
-        nome: "1 moedas",
+        nome: "5 moedas",
         premio: 5,
         chance: 7
     },
 
     {
-        nome: "1 moedas",
+        nome: "1 moeda",
         premio: 1,
         chance: 2.5
     },
 
     {
-        nome: "1 moedas 🎉",
+        nome: "5 moedas 🎉",
         premio: 5,
         chance: 0.5
     }
 
 ];
-
-
-// -------------------------
-// COMPRAR MOEDAS
-// -------------------------
-
-function comprarMoedas(quantidade){
-
-    saldo += quantidade;
-
-    atualizarTela();
-
-}
 
 
 // -------------------------
@@ -84,9 +67,7 @@ function sortearPremio(){
         acumulado += premio.chance;
 
         if(numero < acumulado){
-
             return premio;
-
         }
 
     }
@@ -102,9 +83,9 @@ function sortearPremio(){
 
 function girar(){
 
-    if(girando)
+    if(girando){
         return;
-
+    }
 
     if(saldo <= 0){
 
@@ -122,8 +103,6 @@ function girar(){
         .disabled = true;
 
 
-    // CUSTO DO GIRO
-
     saldo--;
 
     numeroGiros++;
@@ -131,22 +110,20 @@ function girar(){
     moedasGastas++;
 
 
-    document.getElementById("resultado").innerText =
-        "Girando...";
+    document
+        .getElementById("resultado")
+        .innerText = "Girando...";
 
-
-    // SORTEIA RESULTADO
 
     const resultado = sortearPremio();
 
-
-    // ANIMAÇÃO
 
     const voltas =
         5 + Math.floor(Math.random() * 4);
 
     const anguloExtra =
         Math.floor(Math.random() * 360);
+
 
     rotacaoAtual +=
         voltas * 360 + anguloExtra;
@@ -161,8 +138,6 @@ function girar(){
     atualizarTela();
 
 
-    // FINAL DA ANIMAÇÃO
-
     setTimeout(() => {
 
         saldo += resultado.premio;
@@ -172,12 +147,10 @@ function girar(){
 
         document
             .getElementById("resultado")
-            .innerHTML =
-            `${resultado.nome}`;
+            .innerHTML = resultado.nome;
 
 
         adicionarHistorico(resultado);
-
 
         atualizarTela();
 
@@ -188,7 +161,7 @@ function girar(){
             .getElementById("btnGirar")
             .disabled = false;
 
-    },4000);
+    }, 4000);
 
 }
 
@@ -230,6 +203,205 @@ function adicionarHistorico(resultado){
 
 
 // -------------------------
+// MODAIS DE MOEDAS
+// -------------------------
+
+function abrirModal(id){
+
+    document
+        .getElementById(id)
+        .style.display = "flex";
+
+}
+
+
+function fecharModal(id){
+
+    document
+        .getElementById(id)
+        .style.display = "none";
+
+}
+
+
+// -------------------------
+// PAGAMENTO FICTÍCIO
+// -------------------------
+
+function confirmarPagamento(quantidade, modal){
+
+    saldo += quantidade;
+
+    atualizarTela();
+
+    fecharModal(modal);
+
+    alert(
+        `Pagamento fictício confirmado!\n+${quantidade} moedas adicionadas.`
+    );
+
+}
+
+
+// -------------------------
+// CARREGAR ALUNO
+// -------------------------
+
+window.addEventListener("load", () => {
+
+    const nomeSalvo =
+        localStorage.getItem("nomeAluno");
+
+    const saldoSalvo =
+        localStorage.getItem("saldoAluno");
+
+
+    if(nomeSalvo){
+
+        nomeAluno = nomeSalvo;
+
+        saldo =
+            Number(saldoSalvo) || 0;
+
+
+        document
+            .getElementById("nomePerfil")
+            .innerText = nomeAluno;
+
+
+        atualizarTela();
+
+
+        // MOSTRA O AVISO TODA VEZ QUE ENTRAR
+        iniciarAviso();
+
+    }
+
+    else{
+
+        document
+            .getElementById("modalNome")
+            .style.display = "flex";
+
+    }
+
+});
+
+
+// -------------------------
+// SALVAR NOME
+// -------------------------
+
+function salvarNome(){
+
+    const input =
+        document.getElementById("nomeAluno");
+
+    const nome =
+        input.value.trim();
+
+
+    if(nome.length < 2){
+
+        alert("Digite seu nome.");
+
+        return;
+
+    }
+
+
+    nomeAluno = nome;
+
+
+    localStorage.setItem(
+        "nomeAluno",
+        nomeAluno
+    );
+
+
+    document
+        .getElementById("nomePerfil")
+        .innerText = nomeAluno;
+
+
+    document
+        .getElementById("modalNome")
+        .style.display = "none";
+
+
+    iniciarAviso();
+
+}
+
+
+// -------------------------
+// AVISO DE 10 SEGUNDOS
+// -------------------------
+
+function iniciarAviso(){
+
+    const modal =
+        document.getElementById("modalAviso");
+
+    const botao =
+        document.getElementById("btnEntendi");
+
+
+    modal.style.display = "flex";
+
+
+    let segundos = 10;
+
+
+    botao.disabled = true;
+
+    botao.innerText =
+        `Aguarde ${segundos} segundos...`;
+
+
+    const contador =
+        setInterval(() => {
+
+            segundos--;
+
+
+            if(segundos > 0){
+
+                botao.innerText =
+                    `Aguarde ${segundos} segundos...`;
+
+            }
+
+            else{
+
+                clearInterval(contador);
+
+                botao.disabled = false;
+
+                botao.innerText =
+                    "Entendi — iniciar simulação";
+
+            }
+
+        }, 1000);
+
+}
+
+
+// -------------------------
+// FECHAR AVISO
+// -------------------------
+
+function fecharAviso(){
+
+    document
+        .getElementById("modalAviso")
+        .style.display = "none";
+
+}
+
+
+// -------------------------
 // ATUALIZAR TELA
 // -------------------------
 
@@ -254,35 +426,61 @@ function atualizarTela(){
         .getElementById("ganhas")
         .innerText = moedasGanhas;
 
-}
-function abrirModal(id){
 
-    document
-        .getElementById(id)
-        .style.display = "flex";
-
-}
-
-
-function fecharModal(id){
-
-    document
-        .getElementById(id)
-        .style.display = "none";
+    localStorage.setItem(
+        "saldoAluno",
+        saldo
+    );
 
 }
 
 
-function confirmarPagamento(quantidade, modal){
+// -------------------------
+// REGISTRAR SALDO FINAL
+// -------------------------
 
-    saldo += quantidade;
+function sacar(){
 
-    atualizarTela();
+    const confirmar =
+        confirm(
+            `Encerrar a simulação?\n\n` +
+            `Aluno: ${nomeAluno}\n` +
+            `Saldo final: ${saldo} moedas`
+        );
 
-    fecharModal(modal);
+
+    if(!confirmar){
+        return;
+    }
+
+
+    const registro = {
+
+        nome: nomeAluno,
+
+        saldoFinal: saldo,
+
+        giros: numeroGiros,
+
+        gastas: moedasGastas,
+
+        ganhas: moedasGanhas,
+
+        data:
+            new Date().toLocaleString()
+
+    };
+
+
+    localStorage.setItem(
+        "resultadoFinal",
+        JSON.stringify(registro)
+    );
+
 
     alert(
-        `Pagamento fictício confirmado!\n+${quantidade} moedas adicionadas.`
+        `Simulação encerrada!\n\n` +
+        `Saldo final: ${saldo} moedas.`
     );
 
 }

@@ -284,3 +284,64 @@
 .confirmar:hover {
     background: #27ae60;
 }
+.perfil {
+
+    display: flex;
+
+    gap: 20px;
+
+    align-items: center;
+
+    background: #222;
+
+    padding: 10px 20px;
+
+    border-radius: 10px;
+
+}
+
+
+#nomeAluno {
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin: 20px 0;
+
+    border-radius: 8px;
+
+    border: 1px solid #555;
+
+    background: #111;
+
+    color: white;
+
+    font-size: 17px;
+
+}
+
+
+.modal-obrigatorio {
+
+    z-index: 9999;
+
+}
+
+
+#btnEntendi:disabled {
+
+    background: #555;
+
+    cursor: not-allowed;
+
+}
+
+
+.sacar {
+
+    background: #3498db;
+
+    color: white;
+
+}
