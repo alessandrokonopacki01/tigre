@@ -608,7 +608,7 @@ async function registrarAlunoNaPlanilha(){
 function copiarTexto(idTexto, idBotao){
 
     const texto =
-        document.getElementById(idTexto).innerText;
+        document.getElementById(idTexto).innerText.trim();
 
     navigator.clipboard.writeText(texto)
         .then(() => {

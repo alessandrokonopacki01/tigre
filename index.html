@@ -162,28 +162,48 @@
     </section>
     <!-- MODAL 1 MOEDAS -->
 
+<!-- MODAL 1 MOEDA -->
+
 <div class="modal" id="modal10">
 
     <div class="modal-conteudo">
 
-        <span class="fechar" onclick="fecharModal('modal10')">&times;</span>
+        <span class="fechar" onclick="fecharModal('modal10')">
+            &times;
+        </span>
 
-        <h2>1 moedas</h2>
+        <h2>1 moeda</h2>
 
-        <p>Pagamento em analise.</p>
+        <p>Escaneie o QR Code ou copie o código abaixo.</p>
 
-        <div class="copiar-box">
-    <span id="pix1">PIX copia e cola</span>
+        <img
+            src="img/1.png"
+            alt="QR Code"
+            class="qr-img"
+        >
 
-    <button onclick="copiarTexto()">
-        Copiar
-    </button>
-</div>
+        <div class="pix-box">
+
+            <span id="texto1">
+                00020126580014br.gov.bcb.pix013636811b71-92ef-47c8-a143-f4c69febe50252040000530398654041.005802BR5925ALESSANDRO LIMA KONOPACKI6009Sao Paulo62290525REC6ABC0B8DE4B6398803177963048DA8
+            </span>
+
+            <button
+                id="btn1"
+                onclick="copiarTexto('texto1', 'btn1')"
+            >
+                Copiar
+            </button>
+
+        </div>
 
         <p class="valor">R$ 1,00</p>
 
-        <button class="confirmar" onclick="confirmarPagamento(10, 'modal10')">
-            Pagar!
+        <button
+            class="confirmar"
+            onclick="confirmarPagamento(1, 'modal10')"
+        >
+            Pagar
         </button>
 
     </div>
@@ -197,23 +217,41 @@
 
     <div class="modal-conteudo">
 
-        <span class="fechar" onclick="fecharModal('modal50')">&times;</span>
+        <span class="fechar" onclick="fecharModal('modal50')">
+            &times;
+        </span>
 
         <h2>5 moedas</h2>
 
-        <p>Pagamento em analise.</p>
+        <p>Escaneie o QR Code ou copie o código abaixo.</p>
 
-        <div class="copiar-box">
-    <span id="pix5">PIX copia e cola</span>
+        <img
+            src="img/5.png"
+            alt="QR Code"
+            class="qr-img"
+        >
 
-    <button onclick="copiarTexto()">
-        Copiar
-    </button>
+        <div class="pix-box">
+
+            <span id="texto5">
+00020126580014br.gov.bcb.pix013636811b71-92ef-47c8-a143-f4c69febe50252040000530398654045.005802BR5925ALESSANDRO LIMA KONOPACKI6009Sao Paulo62290525REC6ABC0CD6C305943236928663042B60            </span>
+
+            <button
+                id="btn5"
+                onclick="copiarTexto('texto5', 'btn5')"
+            >
+                Copiar
+            </button>
+
+        </div>
 
         <p class="valor">R$ 5,00</p>
 
-        <button class="confirmar" onclick="confirmarPagamento(50, 'modal50')">
-            Pagar!
+        <button
+            class="confirmar"
+            onclick="confirmarPagamento(5, 'modal50')"
+        >
+            Pagar
         </button>
 
     </div>
@@ -227,30 +265,53 @@
 
     <div class="modal-conteudo">
 
-        <span class="fechar" onclick="fecharModal('modal100')">&times;</span>
+        <span class="fechar" onclick="fecharModal('modal100')">
+            &times;
+        </span>
 
         <h2>10 moedas</h2>
 
-        <p>Pagamento em analise.</p>
+        <p>Escaneie o QR Code ou copie o código abaixo.</p>
 
-        <div class="copiar-box">
-    <span id="pix10">PIX copia e cola</span>
+        <img
+            src="img/10.png"
+            alt="QR Code"
+            class="qr-img"
+        >
 
-    <button onclick="copiarTexto()">
-        Copiar
-    </button>
+        <div class="pix-box">
+
+            <span id="texto10">
+                00020126580014br.gov.bcb.pix013636811b71-92ef-47c8-a143-f4c69febe502520400005303986540510.005802BR5925ALESSANDRO LIMA KONOPACKI6009Sao Paulo62290525REC6ABC0BF00C9AB6575833746304C813
+            </span>
+
+            <button
+                id="btn10"
+                onclick="copiarTexto('texto10', 'btn10')"
+            >
+                Copiar
+            </button>
+
+        </div>
 
         <p class="valor">R$ 10,00</p>
 
-        <button class="confirmar" onclick="confirmarPagamento(100, 'modal100')">
-            Pagar!
+        <button
+            class="confirmar"
+            onclick="confirmarPagamento(10, 'modal100')"
+        >
+            Pagar
         </button>
 
     </div>
 
 </div>
 
+
+<!-- MODAL IDENTIFICAÇÃO -->
+
 <div class="modal modal-obrigatorio" id="modalNome">
+
     <div class="modal-conteudo">
 
         <h2>Identificação</h2>
@@ -279,6 +340,7 @@
         </button>
 
     </div>
+
 </div>
 <div class="modal modal-obrigatorio" id="modalAviso">
 
